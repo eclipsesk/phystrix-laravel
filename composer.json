@@ -1,0 +1,34 @@
+{
+  "name": "eclipsesk/laravel-phystrix",
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "",
+      "email": ""
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/config": "~5.0",
+    "illuminate/support": "~5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Eclipsesk\\Phystrix\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "laravel": {
+        "providers": [
+            "Eclipsesk\\Phystrix\\PhystrixServiceProvider"
+        ]
+    }
+  }
+}
