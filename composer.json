@@ -1,6 +1,6 @@
 {
   "name": "eclipsesk/laravel-phystrix",
-  "description": "",
+  "description": "Laravel binding for phystrix Package",
   "keywords": [],
   "homepage": "",
   "license": "MIT",
@@ -13,7 +13,8 @@
   "require": {
     "php": ">=5.4.0",
     "illuminate/config": "~5.0",
-    "illuminate/support": "~5.0"
+    "illuminate/support": "~5.0",
+    "odesk/phystrix": "^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0"

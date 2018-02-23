@@ -29,18 +29,20 @@ class PhystrixServiceProvider extends LaravelServiceProvider {
      */
     public function register() {
 
-        $config = new \Zend\Config\Config(config("phystrix"));
+        $this->app->singleton('Eclipsesk\Phystrix\Phystrix', function($app){
+            $config = new \Zend\Config\Config($app['config']->get("phystrix"));
 
-        $stateStorage = new \App\Classes\ApcuStateStorage();
-        $circuitBreakerFactory = new \Odesk\Phystrix\CircuitBreakerFactory($stateStorage);
-        $commandMetricsFactory = new \Odesk\Phystrix\CommandMetricsFactory($stateStorage);
+            $stateStorage = new ApcuStateStorage();
+            $circuitBreakerFactory = new \Odesk\Phystrix\CircuitBreakerFactory($stateStorage);
+            $commandMetricsFactory = new \Odesk\Phystrix\CommandMetricsFactory($stateStorage);
 
-        $phystrix = new \Odesk\Phystrix\CommandFactory(
-            $config, new \Zend\Di\ServiceLocator(), $circuitBreakerFactory, $commandMetricsFactory,
-            new \Odesk\Phystrix\RequestCache(), new \Odesk\Phystrix\RequestLog()
-        );
+            $phystrix = new Phystrix(
+                $config, new \Zend\Di\ServiceLocator(), $circuitBreakerFactory, $commandMetricsFactory,
+                new \Odesk\Phystrix\RequestCache(), new \Odesk\Phystrix\RequestLog()
+            );
 
-        $this->app->instance('Eclipsesk\Phystrix\Phystrix', $phystrix);
+            return $phystrix;
+        });
 
     }
 
